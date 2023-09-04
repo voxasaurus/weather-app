@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import headerImage from './assets/header.png';
+import dayHeaderImage from './assets/day-header.png';
+import nightHeaderImage from './assets/night-header.jpg';
 import './styles.css';
 
 function NightModeToggle({ toggleNightMode, isNightMode }) {
@@ -15,6 +16,7 @@ function NightModeToggle({ toggleNightMode, isNightMode }) {
 
 function Root() {
     const [nightMode, setNightMode] = useState(false);
+    const headerImage = nightMode ? nightHeaderImage : dayHeaderImage;
 
     const toggleNightMode = () => {
         setNightMode(!nightMode);
