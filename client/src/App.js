@@ -8,7 +8,10 @@ function App() {
    const [unit, setUnit] = useState("F");
    const [mode, setMode] = useState("day");
    
-   const apiKey = "23a0d3f670f8d07296758717bebba6f0"; // Move to a secure location later
+   const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
+   console.log("API Key:", apiKey);
+
+
    
    const getWeatherData = async (city) => {
       try {
