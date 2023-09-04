@@ -11,9 +11,9 @@ function SearchBar({ onSearch }) {
    };
 
    return (
-      <div className="mb-3">
+      <div className="mb-3"> 
          <div className="input-group"> 
-            <input 
+            <input style={{ marginTop: "10px" }}
                 type="text" 
                 className="form-control"
                 placeholder="Enter city..." 
@@ -25,7 +25,7 @@ function SearchBar({ onSearch }) {
                     }
                 }}
             />
-            <div className="input-group-append">
+            <div className="input-group-append" style={{ marginTop: "10px" }}>
                 <button 
                     className="btn btn-primary" 
                     onClick={handleSearch}>

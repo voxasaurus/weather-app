@@ -1,18 +1,13 @@
-// src/App.js
 import React, { useState } from 'react';
 import SearchBar from './components/SearchBar';
 
-function App() {
+function App({ isNightMode }) {
    const [weatherData, setWeatherData] = useState(null);
    const [forecastData, setForecastData] = useState(null);
    const [unit, setUnit] = useState("F");
-   const [mode, setMode] = useState("day");
    
-   const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-   console.log("API Key:", apiKey);
+   const { REACT_APP_OPEN_WEATHER_API_KEY: apiKey } = process.env;
 
-
-   
    const getWeatherData = async (city) => {
       try {
          const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
@@ -40,11 +35,7 @@ function App() {
       setUnit(prevUnit => prevUnit === "C" ? "F" : "C");
    };
 
-   const toggleMode = () => {
-      setMode(prevMode => prevMode === "day" ? "night" : "day");
-   };
-
-   const themeClass = mode === "day" ? "bg-light text-dark" : "bg-dark text-light";
+   const themeClass = isNightMode ? "bg-dark text-light" : "bg-light text-dark";
 
    return (
       <div className={`container mt-5 ${themeClass}`}>
@@ -52,13 +43,10 @@ function App() {
              getWeatherData(city);
              getForecastData(city);
          }} />
-
+         
          <div className="d-flex justify-content-between align-items-center mt-3">
             <button className="btn btn-outline-secondary" onClick={toggleUnit}>
                Switch to {unit === "F" ? "Celsius" : "Fahrenheit"}
-            </button>
-            <button className="btn btn-outline-secondary" onClick={toggleMode}>
-               {mode === "day" ? "Night Mode" : "Day Mode"}
             </button>
          </div>
 
