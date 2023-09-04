@@ -1,20 +1,33 @@
+/* Ensuring full height for the main containers */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    min-height: 100%; /* Ensure root container takes the full height */
+    display: flex;
+    flex-direction: column;
+}
+
 .appContainer {
     text-align: center;  /* To center the title and header image */
     padding: 20px;
     background-color: #f9f9f9;  /* A light background color */
+    flex: 1; /* Allows this container to grow and take up any available space */
 }
 
 .appHeader {
     margin: 0 auto; /* Center the image */
     height: 331px;
-    width: 331x;
+    width: 331px; 
 }
 
 .appTitle {
     color: white; 
     margin-top: 20px;
 }
-/* ... [Your previous styles remain unchanged] ... */
 
 /* Day Mode styles */
 .day-mode {
@@ -25,4 +38,8 @@
 .night-mode {
     background-color: #212529;  /* Dark background for night mode */
     color: #f9f9f9;  /* Light text color for night mode */
+}
+.rounded-container {
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);  /* Optional: Add a subtle shadow for some depth */
 }

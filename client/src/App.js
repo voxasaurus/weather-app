@@ -51,7 +51,7 @@ function App({ isNightMode }) {
     const themeClass = isNightMode ? "bg-dark text-light" : "bg-light text-dark";
 
     return (
-        <div className={`container mt-5 ${themeClass}`}>
+      <div className={`container mt-5 ${themeClass} rounded-container`}>
             <SearchBar onSearch={city => {
                 getWeatherData(city);
                 getForecastData(city);

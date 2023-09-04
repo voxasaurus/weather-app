@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dayHeaderImage from './assets/day-header.png';
-import nightHeaderImage from './assets/night-header.jpg';
+import nightHeaderImage from './assets/night-header.png';
 import './styles.css';
 
 function NightModeToggle({ toggleNightMode, isNightMode }) {
