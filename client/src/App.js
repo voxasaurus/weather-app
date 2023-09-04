@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
 import SearchBar from './components/SearchBar';
+import { animated } from '@react-spring/web';
+import { useSpring } from '@react-spring/core';
+
+function WeatherIcon({ src, alt }) {
+    const bounce = useSpring({
+        from: { transform: 'scale(0.8)' },
+        to: { transform: 'scale(1)' },
+        config: { tension: 300, friction: 10 },
+    });
+
+    return <animated.img style={bounce} src={src} alt={alt} />;
+}
 
 function App({ isNightMode }) {
     const [weatherData, setWeatherData] = useState(null);
@@ -68,7 +80,7 @@ function App({ isNightMode }) {
                     <div key={index} className="card m-2" style={{ width: "12rem" }}>
                         <div className="card-body text-center">
                             <h6 className="card-title">{new Date(day.dt * 1000).toLocaleDateString()}</h6>
-                            <img src={`http://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="Weather icon" className="mb-3" />
+                            <WeatherIcon src={`http://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="Weather icon" className="mb-3" />
                             <p className="card-text">{day.weather[0].description}</p>
                             <h4>{unit === "C" ? kelvinToCelsius(day.main.temp) : kelvinToFahrenheit(day.main.temp)}°{unit}</h4>
                         </div>
