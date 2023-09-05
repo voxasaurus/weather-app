@@ -10,11 +10,12 @@ import './styles.css';
 import { animated } from '@react-spring/web';
 import { useSpring } from '@react-spring/core';
 
-
 function NightModeToggle({ toggleNightMode, isNightMode }) {
-    return <button onClick={toggleNightMode} className="btn btn-outline-secondary mt-3">
-        {isNightMode ? "Day Mode" : "Night Mode"}
-    </button>;
+    return (
+        <button onClick={toggleNightMode} className="btn btn-outline-secondary mt-3">
+            {isNightMode ? "Day Mode" : "Night Mode"}
+        </button>
+    );
 }
 
 function Root() {
@@ -25,15 +26,21 @@ function Root() {
         setNightMode(!nightMode);
     };
 
-    const { color, backgroundColor } = useSpring({
+    const { color, backgroundColor, opacity, transform } = useSpring({
         color: nightMode ? '#f9f9f9' : '#212529',
         backgroundColor: nightMode ? '#212529' : '#f9f9f9',
+        opacity: nightMode ? 1 : 0.7,
+        transform: `scale(${nightMode ? 1.03 : 1})`,
+        config: {
+            tension: 120,
+            friction: 20,
+        }
     });
 
     return (
         <React.StrictMode>
             <animated.div style={{ color, backgroundColor }} className={`appContainer ${nightMode ? "night-mode" : "day-mode"}`}>
-                <img src={headerImage} alt="Header" className="appHeader" />
+                <animated.img src={headerImage} alt="Header" className="appHeader" style={{ opacity, transform }} />
                 <h1 className="appTitle">Weather App</h1>
                 <NightModeToggle toggleNightMode={toggleNightMode} isNightMode={nightMode} />
                 <App isNightMode={nightMode} />

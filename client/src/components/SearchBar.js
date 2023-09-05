@@ -1,4 +1,3 @@
-// src/components/SearchBar.js
 import React, { useState } from 'react';
 
 function SearchBar({ onSearch }) {
@@ -11,7 +10,7 @@ function SearchBar({ onSearch }) {
    };
 
    return (
-      <div className="mb-3"> 
+      <div className="mb-3 col-md-6 mx-auto"> 
          <div className="input-group"> 
             <input style={{ marginTop: "10px" }}
                 type="text" 
@@ -25,8 +24,8 @@ function SearchBar({ onSearch }) {
                     }
                 }}
             />
-            <div className="input-group-append" style={{ marginTop: "10px" }}>
-                <button 
+            <div className="input-group-append">
+                <button style={{ marginTop: "10px" }}
                     className="btn btn-primary" 
                     onClick={handleSearch}>
                     Search
